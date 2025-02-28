@@ -6,7 +6,7 @@ struct Node {
 	Node(int v, Node* n = nullptr) {
 		vertex = v;
 		next = n;
-	} 
+	}
 
 	int vertex;
 	Node* next;
@@ -21,7 +21,7 @@ public:
 	// Constructor for graph. Allocates the array and sets each header pointer to nullptr.
 	Graph(int n) {
 		numVerticies = n;
-		adjLists = new Node*[numVerticies];
+		adjLists = new Node * [numVerticies];
 
 		for (int i = 0; i < numVerticies; i++) {
 			adjLists[i] = nullptr;
@@ -60,7 +60,7 @@ public:
 					adjLists[u] = curr->next;
 				else
 					prev->next = curr->next;
-				
+
 				delete curr;
 				break;
 			}
@@ -82,7 +82,7 @@ public:
 				delete curr;
 				break;
 			}
-			
+
 			prev = curr;
 			curr = curr->next;
 		}
@@ -90,7 +90,7 @@ public:
 
 	// Utility to help visualize the graph's structure, printing out each vertex's adjacency list.
 	void printGraph() {
-		for (int i =0; i < numVerticies; i++) {
+		for (int i = 0; i < numVerticies; i++) {
 			std::cout << "Vertex " << i << ": ";
 			Node* curr = adjLists[i];
 			while (curr != nullptr) {
@@ -103,35 +103,33 @@ public:
 	}
 };
 
-
-	
-
 int main() {
-    // Create a graph with 7 vertices.
-    int vertices = 7;
-    Graph g(vertices);
-    
-    // Add some edges.
-    // 0-1, 1-4, 2-3, 1-3, 3-4, 5-2, 1-6, 6-2, 6-3.
-    g.addEdge(0, 1);
-    g.addEdge(1, 4);
-    g.addEdge(2, 3);
-    g.addEdge(1, 3);
-    g.addEdge(3, 4);
+	// Create a graph with 7 vertices.
+	int vertices = 7;
+	Graph g(vertices);
+
+	// Add some edges.
+	// 0-1, 1-4, 2-3, 1-3, 3-4, 5-2, 1-6, 6-2, 6-3.
+	g.addEdge(0, 1);
+	g.addEdge(1, 4);
+	g.addEdge(2, 3);
+	g.addEdge(1, 3);
+	g.addEdge(3, 4);
 	g.addEdge(5, 2);
 	g.addEdge(1, 6);
 	g.addEdge(6, 2);
 	g.addEdge(6, 3);
-    
+
 	std::cout << "Graph after adding edges:" << std::endl;
-    g.printGraph();
-    
-    // Deletes the edge 1-4 
+	g.printGraph();
+
+	// Deletes the edge 1-4 
 	std::cout << "\nDeleting edge 1-4:" << std::endl;
-    g.deleteEdge(1, 4);
-    
+	g.deleteEdge(1, 4);
+
 	std::cout << "\nGraph after deleting edge 1-4:" << std::endl;
-    g.printGraph();
-    
-    return 0;
+	g.printGraph();
+
+	return 0;
 }
+
